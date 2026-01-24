@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row align-items-center">
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-lg">
+            <img src="{{ url_for('static', filename='uploads/' + image.filename) }}" class="img-fluid rounded"
+                alt="Hidden Message">
+        </div>
+        <div class="text-center mt-2">
+            <small class="text-muted">Gambar ini mengandung data LSB tersembunyi.</small>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card p-4">
+            <h3 class="mb-3">Buka Pesan Rahasia</h3>
+            <p>Masukkan kunci yang digunakan pengirim untuk membaca pesan asli.</p>
+
+            <form method="POST" class="mb-4">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Masukkan Kunci (Key)</label>
+                    <input type="text" name="key" class="form-control" placeholder="Key..." required>
+                </div>
+                <button type="submit" class="btn btn-warning w-100 text-white fw-bold">🔓 Buka Pesan</button>
+            </form>
+
+            {% if raw %}
+            <div class="bg-dark text-white p-3 rounded mt-3">
+                <p class="mb-1 text-muted" style="font-size: 0.8rem;">DATA MENTAH (Dari LSB):</p>
+                <code class="text-warning">{{ raw }}</code>
+
+                <hr class="border-secondary">
+
+                <p class="mb-1 text-muted" style="font-size: 0.8rem;">PESAN ASLI (Setelah Vigenère):</p>
+                <h4 class="text-success fw-bold mb-0">{{ message }}</h4>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

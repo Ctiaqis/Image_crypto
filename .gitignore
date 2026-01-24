@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads (jika ada file upload sensitif)
+# uploads/
+
+# Database (optional - uncomment jika tidak ingin upload database)
+# *.db
+# *.sqlite
+
+# Environment variables
+.env
+.env.local

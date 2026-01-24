@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h2 class="fw-bold">Galeri Rahasia</h2>
+    <p class="text-muted">Kelihatannya biasa saja, tapi ada pesan tersembunyi di dalamnya.</p>
+</div>
+
+<div class="row">
+    {% for img in images %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <img src="{{ url_for('static', filename='uploads/' + img.filename) }}" class="card-img-top"
+                style="height: 200px; object-fit: cover;" alt="...">
+
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ img.description }}</h5>
+                <p class="card-text text-muted small"><i class="bi bi-clock"></i> Uploaded: {{ img.upload_time }}</p>
+
+                <div class="mt-auto">
+                    <hr>
+                    <a href="/reveal/{{ img.id }}" class="btn btn-outline-primary w-100 mb-2">🔍 Cek Pesan Rahasia</a>
+                    <a href="{{ url_for('static', filename='uploads/' + img.filename) }}" download
+                        class="btn btn-primary w-100 text-center">
+                        <i class="bi bi-download"></i> Unduh
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-12 text-center py-5">
+        <h4 class="text-muted">Belum ada gambar. Silahkan upload dulu!</h4>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

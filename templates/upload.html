@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card p-4">
+            <h3 class="text-center mb-4">Sisipkan Pesan</h3>
+
+            <form method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Pilih Foto (PNG/JPG)</label>
+                    <input type="file" name="file" class="form-control" accept=".png, .jpg, .jpeg" required>
+                    <div class="form-text">Gambar akan otomatis dikonversi ke PNG agar kualitas terjaga.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-danger">Pesan Rahasia</label>
+                    <textarea name="message" class="form-control" rows="3" placeholder="Tulis rahasia di sini..."
+                        required></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold text-primary">Kunci Enkripsi (Password)</label>
+                    <input type="text" name="key" class="form-control" placeholder="Contoh: MERDEKA" required>
+                    <div class="form-text">Password ini dipakai untuk enkripsi Vigenère. Jangan sampai lupa!</div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Deskripsi Gambar (Publik)</label>
+                    <input type="text" name="description" class="form-control"
+                        placeholder="Contoh: Pemandangan liburan..." required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2">🔒 Sembunyikan & Upload</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

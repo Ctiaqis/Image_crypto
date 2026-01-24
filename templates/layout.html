@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stego Gallery - Kriptografi Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        /* --- PALET WARNA OCEAN DEEP ---
+           Dark Slate:   #0F172A (Background Utama)
+           Slate:        #1E293B (Card & Navbar)
+           Teal:         #14B8A6 (Aksen Utama)
+           Sky Blue:     #38BDF8 (Aksen Sekunder)
+           Slate Gray:   #94A3B8 (Teks Muted)
+           White:        #F8FAFC (Teks Utama)
+        */
+
+        body {
+            background-color: #0F172A;
+            color: #F8FAFC;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* --- Kustomisasi Navbar --- */
+        .navbar {
+            background: linear-gradient(135deg, #1E293B 0%, #334155 100%) !important;
+            box-shadow: 0 4px 20px rgba(20, 184, 166, 0.15);
+            border-bottom: 1px solid #334155;
+        }
+
+        .navbar-brand {
+            color: #F8FAFC !important;
+            letter-spacing: 1px;
+        }
+
+        .navbar-brand i {
+            color: #14B8A6;
+        }
+
+        .btn-nav-outline {
+            color: #14B8A6;
+            border-color: #14B8A6;
+            transition: all 0.3s ease;
+        }
+
+        .btn-nav-outline:hover {
+            background-color: #14B8A6;
+            color: #0F172A;
+            box-shadow: 0 0 20px rgba(20, 184, 166, 0.5);
+        }
+
+        .btn-nav-solid {
+            background: linear-gradient(135deg, #38BDF8 0%, #14B8A6 100%);
+            color: #0F172A;
+            font-weight: bold;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-nav-solid:hover {
+            background: linear-gradient(135deg, #7DD3FC 0%, #2DD4BF 100%);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+            color: #0F172A;
+        }
+
+        /* --- Kustomisasi Card --- */
+        .card {
+            background-color: #1E293B;
+            border: 1px solid #334155;
+            color: #F8FAFC;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(20, 184, 166, 0.2);
+            border-color: #14B8A6;
+        }
+
+        .text-muted {
+            color: #94A3B8 !important;
+        }
+
+        hr {
+            border-color: #334155;
+            opacity: 0.5;
+        }
+
+        /* --- Kustomisasi Tombol Utama --- */
+        .btn-primary {
+            background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
+            border: none;
+            color: #0F172A;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:active,
+        .btn-primary:focus {
+            background: linear-gradient(135deg, #2DD4BF 0%, #14B8A6 100%) !important;
+            border: none !important;
+            color: #0F172A !important;
+            box-shadow: 0 0 20px rgba(20, 184, 166, 0.5);
+        }
+
+        .btn-outline-primary {
+            color: #14B8A6;
+            border-color: #14B8A6;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #14B8A6;
+            color: #0F172A;
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #38BDF8 0%, #0EA5E9 100%);
+            border: none;
+            color: #0F172A;
+            font-weight: bold;
+        }
+
+        .btn-warning:hover {
+            background: linear-gradient(135deg, #7DD3FC 0%, #38BDF8 100%);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #F43F5E 0%, #E11D48 100%);
+            border: none;
+            color: #FFFFFF;
+        }
+
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #FB7185 0%, #F43F5E 100%);
+            box-shadow: 0 0 20px rgba(244, 63, 94, 0.5);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+            border: none;
+            color: #0F172A;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #4ADE80 0%, #22C55E 100%);
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+        }
+
+        /* --- Kustomisasi Form Input --- */
+        .form-control,
+        .form-select,
+        textarea {
+            background-color: #0F172A;
+            border: 1px solid #334155;
+            color: #F8FAFC;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus,
+        .form-select:focus,
+        textarea:focus {
+            background-color: #1E293B;
+            border-color: #14B8A6;
+            color: #F8FAFC;
+            box-shadow: 0 0 0 0.25rem rgba(20, 184, 166, 0.25);
+        }
+
+        .form-label,
+        .form-text {
+            color: #F8FAFC;
+        }
+
+        /* Placeholder color */
+        ::placeholder {
+            color: #94A3B8 !important;
+            opacity: 0.8;
+        }
+
+        /* --- Links --- */
+        a {
+            color: #14B8A6;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #38BDF8;
+        }
+
+        /* --- Glow Effects --- */
+        .glow-teal {
+            box-shadow: 0 0 25px rgba(20, 184, 166, 0.4);
+        }
+
+        .glow-blue {
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+        }
+
+        /* --- Special Gradient Text --- */
+        .gradient-text {
+            background: linear-gradient(135deg, #14B8A6, #38BDF8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* --- Glass Effect --- */
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark mb-5 py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="/"><i class="bi bi-shield-lock-fill me-2"></i>Stego Gallery</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="d-flex gap-2 mt-3 mt-lg-0">
+                    <a href="/" class="btn btn-nav-outline px-4">Galeri</a>
+                    <a href="/upload" class="btn btn-nav-solid px-4"><i class="bi bi-upload me-2"></i>Upload Baru</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container pb-5">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        {% set alert_class = 'alert-primary' %}
+        {% if category == 'error' %} {% set alert_class = 'alert-danger bg-danger text-white border-0' %}
+        {% elif category == 'success' %} {% set alert_class = 'alert-success bg-success text-white border-0' %}
+        {% elif category == 'warning' %} {% set alert_class = 'alert-warning bg-warning text-dark border-0' %}
+        {% endif %}
+
+        <div class="alert {{ alert_class }} alert-dismissible fade show shadow-sm" role="alert">
+            {% if category == 'success' %}<i class="bi bi-check-circle-fill me-2"></i>{% endif %}
+            {% if category == 'error' %}<i class="bi bi-exclamation-triangle-fill me-2"></i>{% endif %}
+            {{ message }}
+            <button type="button" class="btn-close {% if category != 'warning' %}btn-close-white{% endif %}"
+                data-bs-dismiss="alert"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
